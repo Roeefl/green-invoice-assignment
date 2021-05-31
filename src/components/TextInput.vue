@@ -27,10 +27,7 @@
         required: true
       },
       placeholder: String,
-      label: {
-        type: String,
-        required: true
-      }
+      label: String
     }
   }
 </script>
@@ -43,6 +40,7 @@
     flex-direction: column;
 
     .input {
+      outline: 0;
       border: 0;
       border-bottom: 1px solid $primary;
       padding: $spacer / 2;

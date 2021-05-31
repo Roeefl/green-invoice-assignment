@@ -6,17 +6,26 @@
       @changed="onEmailChange"
       placeholder="מייל"
       label="כתובת המייל איתה נרשמת לחשבונית ירוקה"
+      class="input"
     />
     <text-input
+      type="password"
       name="password"
       :value="password"
       @changed="onPasswordChange"
-      placeholder="מייל"
+      placeholder="סיסמה"
+      class="input"
     >
       <a href="#" class="forgot-password">שכחת סיסמא?</a>
     </text-input>
     <span class="actions">
-      <action-button type="submit" color="secondary">
+      <action-button
+        type="submit"
+        color="secondary"
+        :disabled="!email || !password"
+        @clicked="$emit('login-clicked', { email, password })"
+        class="login-button"
+      >
         כניסה
       </action-button>
       <action-button type="submit" color="transparent" icon="google">
@@ -74,10 +83,18 @@
     display: flex;
     flex-direction: column;
 
+    .input {
+      margin-bottom: $spacer * 2;
+    }
+
     .actions {
       margin-top: $spacer * 2;
       display: flex;
-      justify-content: space-evenly;
+
+      .login-button {
+        flex: 1;
+        margin-left: $spacer;
+      }
 
       .google {
         display: flex;

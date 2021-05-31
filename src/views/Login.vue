@@ -5,7 +5,7 @@
         <h1 class="title">
           היי,  טוב לראות אותך
         </h1>
-        <login-form />
+        <login-form @login-clicked="onLogin" />
       </div>
     </section>
     <section class="illustration">
@@ -15,15 +15,21 @@
 </template>
 
 <script>
-  // Simple login flow:
-  // To authenticate a user, use /account/login endpoint via POST request
-  // Endpoint accepts 2 fields, “email” and “password”. (Use the same email & password you registered with)
+  import apiService from '@/services/api'
   import LoginForm from '@/components/LoginForm'
 
   export default {
     name: 'Login',
     components: {
       LoginForm
+    },
+    methods: {
+      onLogin({ email, password }) {
+        console.log('login');
+        apiService.login(email, password);
+        // To authenticate a user, use /account/login endpoint via POST request
+        // Endpoint accepts 2 fields, “email” and “password”. (Use the same email & password you registered with)
+      }
     }
   }
 </script>

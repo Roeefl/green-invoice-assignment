@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" @click="$emit('clicked')" class="button" :class="color">
+  <button :type="type" :disabled="disabled" @click="$emit('clicked')" class="button" :class="[color, { disabled }]">
     <span class="text">
       <slot></slot>
     </span>
@@ -17,6 +17,10 @@
       color: {
         type: String,
         default: 'primary'
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       }
     }
   }
@@ -26,6 +30,7 @@
   @import '@/styles/index';
 
   .button {
+    cursor: pointer;
     padding: $spacer $spacer * 2;
     border-radius: 100px;
     border: 0;
@@ -44,6 +49,11 @@
       background: transparent;
       color: $light-blue;
       border: 1px solid $light-blue;
+    }
+
+    &.disabled {
+      opacity: 50%;
+      cursor: not-allowed;
     }
   }
 
