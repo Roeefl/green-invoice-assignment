@@ -8,12 +8,27 @@ router.get('/', (req, res) => {
   res.send('Server Homepage');
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  console.log("🚀 ~ file: index.js ~ line 13 ~ router.post ~ email", email)
-  console.log("🚀 ~ file: index.js ~ line 13 ~ router.post ~ password", password)
 
-  res.send(activities);
+  const endpoint = `${apiURL}/account/login`;
+
+  try {
+    const user = await axios
+      .post(endpoint, {
+        email,
+        password,
+      })
+      .then(res => res.data);
+  
+    res.send({ user });
+  } catch (err) {
+    const { response = {} } = err;
+    const { data = {} } = response;
+    const { errorCode, errorMessage } = data;
+
+    res.send({ isError: true, errorCode, errorMessage })
+  }
 })
 
 module.exports = router;

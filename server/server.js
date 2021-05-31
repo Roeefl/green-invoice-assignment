@@ -8,6 +8,8 @@ const app = express();
 
 const indexRouter = require('./routes/index');
 
+const PORT = 1337;
+
 app.use(cors({
   origin: 'http://localhost:8080',
   credentials: false,
@@ -36,6 +38,10 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(PORT, () => {
+  console.log(`Green Invoice Home Assingment Server || Listening at http://localhost:${PORT}`)
 });
 
 module.exports = app;

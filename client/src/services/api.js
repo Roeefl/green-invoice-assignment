@@ -1,18 +1,25 @@
 import axios from 'axios';
 
-const apiURL = 'https://jupiter.d.greeninvoice.co.il/api/v1';
+const apiURL = 'http://localhost:1337';
 
 class ApiService {
   static async login(email, password) {
+    const url = `${apiURL}/login`;
+
     const response = await axios
-      .post(apiURL, {
+      .post(url, {
         email,
         password
       })
       .then(res => res.data);
-    console.log("🚀 ~ file: api.js ~ line 13 ~ ApiService ~ login ~ response", response)
 
-    return {};
+    const { isError, errorMessage, user } = response || {};
+    if (isError) {
+      alert(errorMessage);
+      return false;
+    }
+
+    return user;
   }
 }
 

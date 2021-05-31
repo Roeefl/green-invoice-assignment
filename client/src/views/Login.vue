@@ -24,11 +24,9 @@
       LoginForm
     },
     methods: {
-      onLogin({ email, password }) {
-        console.log('login');
-        apiService.login(email, password);
-        // To authenticate a user, use /account/login endpoint via POST request
-        // Endpoint accepts 2 fields, “email” and “password”. (Use the same email & password you registered with)
+      async onLogin({ email, password }) {
+        const user = await apiService.login(email, password);
+        console.log("🚀 ~ file: Login.vue ~ line 29 ~ onLogin ~ user", user)
       }
     }
   }
