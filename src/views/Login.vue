@@ -5,41 +5,30 @@
         <h1 class="title">
           היי,  טוב לראות אותך
         </h1>
-        <h3>
-          Your email is: {{ email }}
-          Your password is: {{ password }}
-        </h3>
-        <form class="form">
-          <Input :value="email" placeholder="מייל" label="כתובת המייל איתה נרשמת לחשבונית ירוקה" />
-          <Input :value="password" placeholder="מייל" label="כתובת המייל איתה נרשמת לחשבונית ירוקה" />
-        </form>
+        <login-form />
       </div>
     </section>
-    <section class="image-container">
-       <img src="@/assets/green_login_page.svg" alt="login page logo" />
+    <section class="illustration">
+       <img src="@/assets/illustration.svg" alt="illustration" />
     </section>
   </div>
 </template>
 
 <script>
-  // No need to implement “Google Sign In” and “Forgot my password”, only simple login flow.
-  // In order to authenticate a user, you should use /account/login endpoint via POST request.
-  // This endpoint accepts 2 fields, “email” and “password”. (Use the same email & password you have registered with)
-  import Input from '@/components/Input';
+  // Simple login flow:
+  // To authenticate a user, use /account/login endpoint via POST request
+  // Endpoint accepts 2 fields, “email” and “password”. (Use the same email & password you registered with)
+  import LoginForm from '@/components/LoginForm'
 
   export default {
     name: 'Login',
-    data: () => ({
-      email: '',
-      password: ''
-    }),
     components: {
-      Input
-    },
+      LoginForm
+    }
   }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   @import '@/styles/index';
 
   .page {
@@ -47,22 +36,24 @@
     display: flex;
 
     .login-container {
+      background: $white;
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .content {
+        padding-right: 10%;
         display: flex;
         flex-direction: column;
 
         .title {
-          line-height: 48px;
+          margin-bottom: $spacer * 2;
         }
       }
     }
 
-    .image-container {
+    .illustration {
       background: $light-pink;
       flex: 1;
       display: flex;

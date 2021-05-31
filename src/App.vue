@@ -1,5 +1,10 @@
 <template>
-  <router-view/>
+  <main class="main">
+    <div class="logo">
+      <img src="@/assets/logo.svg" alt="app-logo" />
+    </div>
+    <router-view/>
+  </main>
 </template>
 
 <script>
@@ -28,5 +33,20 @@
   h1 {
     font-size: $font-size-xxxl;
     letter-spacing: 0;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .logo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 34px;
+      width: 221px;
+      padding: $spacer;
+    }
   }
 </style>
