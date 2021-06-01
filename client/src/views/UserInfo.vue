@@ -5,6 +5,9 @@
       <h2 class="title">
         כל המידע על המשתמש שלי:
       </h2>
+      <h5 class="sorry">
+        {{ sorry }}
+      </h5>
       <ul class="info-grid">
         <li v-for="{ key, formatter = (value) => value } in infoFields" :key="key" class="field">
           <span className="key">
@@ -20,42 +23,10 @@
 </template>
 
 <script>
-  import moment from 'moment'
   import { startCase } from 'lodash'
   import { mapState } from 'vuex'
+  import { userInfoFields } from '@/utils/userInfoFields'
   import PageIllustration from '@/components/PageIllustration'
-
-  const dateFormatter = (date) => moment(date * 1000).format('DD MMMM YYYY HH:MM:SS')
-
-  const infoFields = [
-    {
-      key: 'id'
-    },
-    {
-      key: 'email'
-    },
-    {
-      key: 'firstName'
-    },
-    {
-      key: 'lastName',
-    },
-    {
-      key: 'signUpDate',
-      formatter: dateFormatter
-    },
-    {
-      key: 'activationDate',
-      formatter: dateFormatter
-    },
-    {
-      key: 'subscriptionExpirationDate',
-      formatter: dateFormatter
-    },
-    {
-      key: 'activeBusinessCount'
-    }
-  ]
 
   export default {
     name: 'UserInfo',
@@ -68,10 +39,13 @@
         'user'
       ]),
       infoFields() {
-        return infoFields
+        return userInfoFields
       },
       startCase() {
         return startCase
+      },
+      sorry() {
+        return "(סליחה על הסטייה פתאום לאנגלית ועל הכיעור, אבל בשלב זה כבר לא נותר לי זמן להשקיע עוד קצת בגריד, וגם כך אני כבר באיחור בהגשה >_<)";
       }
     },
     beforeRouteEnter (to, from, next) {
@@ -107,25 +81,23 @@
       width: 40%;
       z-index: 10;
 
-      .title {
+      .sorry {
         margin-bottom: $spacer * 2;
       }
 
       .info-grid {
         direction: ltr;
-        border: 1px solid $primary;
         background: $white;
-        box-shadow: 0 2px 4px $secondary;
+        box-shadow: 0px 0px 60px 2px $secondary;
 
         .field {
-          margin-bottom: $spacer / 2;
           padding: $spacer;
           display: grid;
-          grid-template-columns: 40% 60%;
+          grid-template-columns: 45% 55%;
 
-          // &:nth-child(odd) {
-          //   background: $secondary;
-          // }
+          &:nth-child(odd) {
+            background: $secondary;
+          }
         }
       }
     }
