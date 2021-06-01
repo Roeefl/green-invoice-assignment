@@ -1,6 +1,6 @@
 $mobile-width: 576px;
 $tablet-width: 768px;
-$desktop-width: 1200px;
+$desktop-width: 1000px;
 
 @mixin desktop-only() {
   @media (min-width: #{$desktop-width}) {
@@ -10,6 +10,12 @@ $desktop-width: 1200px;
 
 @mixin tablet-and-above() {
   @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin tablet-and-below() {
+  @media (max-width: #{$desktop-width - 1px}) {
     @content;
   }
 }
@@ -24,6 +30,15 @@ $desktop-width: 1200px;
   @media (max-width: #{$mobile-width - 1px}) {
     @content;
   }
+}
+
+@mixin background-image-transparent() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 15%;
 }
 
 @mixin text-truncate() {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img src="@/assets/user-page-background.jpg" alt="user-page-background" class="background" />
+    <page-illustration />
     <div class="content">
       <h2 class="title">
         כל המידע על המשתמש שלי:
@@ -23,6 +23,7 @@
   import moment from 'moment'
   import { startCase } from 'lodash'
   import { mapState } from 'vuex'
+  import PageIllustration from '@/components/PageIllustration'
 
   const dateFormatter = (date) => moment(date * 1000).format('DD MMMM YYYY HH:MM:SS')
 
@@ -58,6 +59,9 @@
 
   export default {
     name: 'UserInfo',
+    componets: {
+      PageIllustration
+    },
     computed: {
       ...mapState([
         'isAuthenticated',

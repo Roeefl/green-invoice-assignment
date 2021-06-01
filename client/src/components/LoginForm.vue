@@ -24,11 +24,11 @@
         color="secondary"
         :disabled="!email || !password"
         @clicked="$emit('login-clicked', { email, password })"
-        class="login-button"
+        class="login-button simple-login-button"
       >
         כניסה
       </action-button>
-      <action-button type="submit" color="transparent" icon="google">
+      <action-button type="submit" color="transparent" icon="google" class="login-button  google-login-button">
         <span class="google">
           <p class="text">
             כניסה מהירה
@@ -83,6 +83,10 @@
     display: flex;
     flex-direction: column;
 
+    @include mobile-only() {
+      padding: $spacer * 2;
+    }
+
     .input {
       margin-bottom: $spacer * 2;
     }
@@ -91,9 +95,25 @@
       margin-top: $spacer * 2;
       display: flex;
 
-      .login-button {
+      @include mobile-only() {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .login-button { 
+        @include mobile-only() {
+          width: 60vw;
+          margin-bottom: $spacer;
+        }
+      }
+
+      .simple-login-button {
         flex: 1;
         margin-left: $spacer;
+
+        @include mobile-only() {
+          margin-left: 0;
+        }
       }
 
       .google {

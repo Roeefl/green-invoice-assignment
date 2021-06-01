@@ -43,13 +43,14 @@
   .page {
     height: 100%;
     display: flex;
+    position: relative;
 
     .login-container {
-      background: $white;
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 20;
 
       .content {
         padding-right: 10%;
@@ -67,6 +68,10 @@
       flex: 1;
       display: flex;
       align-content: center;
+
+      @include tablet-and-below() {
+        @include background-image-transparent();
+      }
     }
   }
 </style>

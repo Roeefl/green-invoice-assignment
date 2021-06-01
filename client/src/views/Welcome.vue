@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img src="@/assets/user.jpg" alt="user-avatar" class="image" />
+    <page-illustration />
     <div class="content">
       <h2>
         היי {{ user.firstName }}, וברוך הבא למערכת של החשבונית הירוקה!
@@ -18,12 +18,14 @@
 <script>
   // The other 2 screens (welcome, user info) you can use your imagination - try to make them look nice
   import { mapState } from 'vuex'
+  import PageIllustration from '@/components/PageIllustration'
   import ActionButton from '@/components/ActionButton'
 
   export default {
     name: 'Welcome',
     components: {
-      ActionButton
+      ActionButton,
+      PageIllustration
     },
     computed: {
       ...mapState([
@@ -56,13 +58,6 @@
     justify-content: center;
     position: relative;
 
-    .image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50vw;
-    }
-
     .content {
       margin: 10%;
       z-index: 10;
@@ -78,6 +73,13 @@
       top: 0;
       left: 0;
       margin: $spacer;
+
+      @include tablet-and-below() {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        top: unset;
+      }
     }
   }
 </style>
