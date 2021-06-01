@@ -6,7 +6,7 @@ export default createStore({
     user: {}
   },
   mutations: {
-    setUser(state, user) {
+    setUser(state, user = {}) {
       state.isAuthenticated = true
       state.user = user
     }

@@ -4,12 +4,18 @@
       <img src="@/assets/logo.svg" alt="app-logo" />
     </div>
     <router-view/>
+    <logout-button v-if="$route.name !== 'Login'" />
   </main>
 </template>
 
 <script>
+  import LogoutButton from '@/components/LogoutButton'
+
   export default {
-    name: 'App'
+    name: 'App',
+    components: {
+      LogoutButton
+    }
   }
 </script>
 

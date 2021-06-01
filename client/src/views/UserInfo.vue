@@ -59,7 +59,7 @@
 
   export default {
     name: 'UserInfo',
-    componets: {
+    components: {
       PageIllustration
     },
     computed: {
@@ -128,13 +128,6 @@
           // }
         }
       }
-    }
-
-    .logout-button {
-      position: absolute;
-      top: 0;
-      left: 0;
-      margin: $spacer;
     }
   }
 </style>

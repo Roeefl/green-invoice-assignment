@@ -44,6 +44,7 @@
       border: 0;
       border-bottom: 1px solid $primary;
       padding: $spacer / 2;
+      background: $white;
     }
 
     .suffix {
