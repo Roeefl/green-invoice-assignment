@@ -15,6 +15,7 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
   import apiService from '@/services/api'
   import LoginForm from '@/components/LoginForm'
 
@@ -24,9 +25,13 @@
       LoginForm
     },
     methods: {
+      ...mapMutations([
+        'setUser'
+      ]),
       async onLogin({ email, password }) {
-        const user = await apiService.login(email, password);
-        console.log("🚀 ~ file: Login.vue ~ line 29 ~ onLogin ~ user", user)
+        const user = await apiService.login(email, password)
+        this.setUser(user)
+        this.$router.push('/welcome')
       }
     }
   }

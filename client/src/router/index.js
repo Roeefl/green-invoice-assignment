@@ -12,12 +12,18 @@ const routes = [
   {
     path: '/welcome',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/me',
     name: 'Me',
-    component: UserInfo
+    component: UserInfo,
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 

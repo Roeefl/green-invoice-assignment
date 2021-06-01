@@ -29,6 +29,6 @@ router.post('/login', async (req, res) => {
 
     res.send({ isError: true, errorCode, errorMessage })
   }
-})
+});
 
 module.exports = router;

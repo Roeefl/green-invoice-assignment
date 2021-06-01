@@ -35,6 +35,11 @@
     letter-spacing: 0;
   }
 
+  ul {
+    list-style: none;
+    padding-inline-start: 0;
+  }
+
   .main {
     width: 100%;
     height: 100%;
