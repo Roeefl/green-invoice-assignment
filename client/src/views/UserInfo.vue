@@ -1,9 +1,10 @@
 <template>
   <div class="container">
+    <img src="@/assets/user-page-background.jpg" alt="user-page-background" class="background" />
     <div class="content">
-      <h1>
+      <h2 class="title">
         כל המידע על המשתמש שלי:
-      </h1>
+      </h2>
       <ul class="info-grid">
         <li v-for="{ key, formatter = (value) => value } in infoFields" :key="key" class="field">
           <span className="key">
@@ -87,21 +88,40 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     position: relative;
 
-    .info-grid {
-      direction: ltr;
-      border: 1px solid $primary;
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-      .field {
-        margin-bottom: $spacer / 2;
-        padding: $spacer;
-        display: grid;
-        grid-template-columns: 40% 60%;
+    .content {
+      margin: 5%;
+      width: 40%;
+      z-index: 10;
 
-        &:nth-child(odd) {
-          background: $secondary;
+      .title {
+        margin-bottom: $spacer * 2;
+      }
+
+      .info-grid {
+        direction: ltr;
+        border: 1px solid $primary;
+        background: $white;
+        box-shadow: 0 2px 4px $secondary;
+
+        .field {
+          margin-bottom: $spacer / 2;
+          padding: $spacer;
+          display: grid;
+          grid-template-columns: 40% 60%;
+
+          // &:nth-child(odd) {
+          //   background: $secondary;
+          // }
         }
       }
     }

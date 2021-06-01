@@ -1,14 +1,17 @@
 <template>
   <div class="container">
-    <h2>
-      היי {{ user.firstName }}, וברוך הבא למערכת של החשבונית הירוקה!
-    </h2>
-    <router-link to="/me">
-       אל עמוד המשתמש שלי
-    </router-link>
-    <action-button color="secondary" @clicked="onLogout" class="logout-button">
-      התנתקות
-    </action-button>
+    <img src="@/assets/user.jpg" alt="user-avatar" class="image" />
+    <div class="content">
+      <h2>
+        היי {{ user.firstName }}, וברוך הבא למערכת של החשבונית הירוקה!
+      </h2>
+      <router-link to="/me" class="profile-link">
+        קחו אותי אל עמוד המשתמש שלי
+      </router-link>
+      <action-button color="secondary" @clicked="onLogout" class="logout-button">
+        התנתקות
+      </action-button>
+    </div>
   </div>
 </template>
 
@@ -51,8 +54,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     position: relative;
+
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50vw;
+    }
+
+    .content {
+      margin: 10%;
+      z-index: 10;
+
+      .profile-link {
+        color: $primary;
+        font-size: $font-size-md;
+      }
+    }
 
     .logout-button {
       position: absolute;
